@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Coffee - machine</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="ajax.js"> </script>
+    <script type="text/javascript" src="text-utils.js"> </script>
+    <script type="text/javascript" src="coffee.js"> </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="Coffeemaker1">
+            <h2>Coffee Maker #1</h2>
+            <p><img src="http://placehold.it/300x240" alt=""></p>
+            <div id="coffeemaker1-status">Idle</div>
+
+            <div id="coffeeorder">
+                <p><img src="http://placehold.it/240x100" alt=""></p>
+                <h2>Place your coffee order here:</h2>
+                <div id="controls1">
+                    <form action="">
+                        <p>Name: <input type="text" name="name" id="name"/></p>
+                        <h3>Size</h3>
+                        <p>
+                            <input type="radio" name="size" value="small" checked="true">Small</input>
+                            <input type="radio" name="size" value="medium">Medium</input>
+                            <input type="radio" name="size" value="large">Large</input>
+                        </p>
+                        <h3>Beverage</h3>
+                        <p>
+                            <input type="radio" name="bevarage" value="mocha" checked="true">Mocha</input>
+                            <input type="radio" name="bevarage" value="latte">Latte</input>
+                            <input type="radio" name="bevarage" value="cappucino">Cappucino</input>
+                        </p>
+                        <p>
+                            <input type="button" onclick="orderCoffee();" value="Order Coffee" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div id="coffeemaker2">
+                <h2>Coffee Maker #2</h2>
+                <p><img src="http://placehold.it/300x240" alt=""></p>
+                <div id="coffeemaker2-status">Idle</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

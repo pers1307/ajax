@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <script type="text/javascript">
+        var obj1 = {user : "John", age : 22, country : "US"};
+        var obj2 = {user : "John2", age : 23, country : "US2"};
+        var obj3 = {user : "John3", age : 24, country : "US3"};
+        var obj4 = {u1 : obj1, u2 : obj2, u3 : obj3};
+        document.write(obj1.user);
+        document.write(obj4.u1.country);
+        document.write(obj4["u2"]["user"]);
+        document.write("<br />");
+
+        var user = {
+            name : "Frank",
+            id : 453,
+            toJSON : function () { // Переопределяет метод коныертации в json
+                return {
+                    name : this.name,
+                    lastVisit : Date.now()
+                }
+            }
+        };
+
+        var userData = JSON.stringify(user);
+        console.log(userData);
+        document.write(userData);
+        document.write(JSON.parse(userData));
+        console.log(JSON.parse(userData));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

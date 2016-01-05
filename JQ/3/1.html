@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251" />
+	<title>jQuery.ajax()</title>
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#butexample").click(function () {
+				$("#doc").hide(500);
+				$("#example").show(500);
+			}); 
+			$("#butdoc").click(function () {
+				$("#doc").show(500);
+				$("#example").hide(500);
+			});
+
+			$("#buttest").click(function(){
+				var a = $("#text1").val();
+				var b = $("#text2").val();
+				$.ajax({
+					type: "POST",
+					url: "test.php",
+					data: ({les : 1, a : a, b : b}),
+					beforesend: alert("Отправляемые данные: a = " + a + ", b = " + b),
+					success: function(data){alert("Сумма = " + data);}
+				});
+			});
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main">
+	<div id="header">jQuery.ajax()</div> <!--end header-->
+	<div id="wrapper">
+		<pre align="right"><a href="#" id="butdoc">Документация</a>      <a href="#" id="butexample">Примеры</a></pre>
+		<div id="content">
+			<div id="doc">
+			<p id="theme"> - Загрузка контента используя HTTP запрос</p>
+			<p>Принимаемые аргументы:</p>
+			<dl>
+				<dt>async</dt>
+					<dd>Тип boolean (true, false), по умолчанию true. При значении логическом значении true все запросы отсылаются асинхронно. Если значение false то запрос осуществляется синхронно, во время синхронного запроса браузер может быть заблокирован.</dd>
+				<dt>beforeSend</dt>
+					<dd>Функця, которая выпольняется перед передачей запроса.</dd>
+				<dt>complete</dt>
+					<dd>Функция, которая выполнится после завершения запроса.</dd>
+				<dt>data</dt>
+					<dd>Данные, которые передаются на сервер. Если данные не являются строкой, то они конвертируются в строку запроса. Для запросов типа GET данные прикрепляются к URL. Объект должен состоять из пар ключ/значение. Если в значении массив, то jQuery упорядочивает значения, принадлежащие одному ключу, например, {foo:["bar1", "bar2"]} превращается в &foo=bar1&foo=bar2.</dd>
+				<dt>error</dt>
+					<dd>Функция выполняется в случае неудачного завершения запроса.</dd>
+				<dt>success</dt>
+					<dd>Функция выполненяется в случае успешного завершения запроса</dd>
+				<dt>type</dt>
+					<dd>тип запроса - POST либо GET. По умолчанию - GET.</dd>
+				<dt>url</dt>
+					<dd>url запроса. По умолчанию - текущая страница.</dd>
+			</dl>
+		</div> <!-- end doc-->
+		<div id="example" style="display: none;">
+		<p id="titlecode">HTML:</p><code><p>a: &lt;input type="text" id="text1" value=""&gt;
+b:&lt;input type="text" id="text2" value=""&gt;
+&lt;button id="buttest"&gt;Получить сумму&gt;/button&gt;</p></code>
+		<p id="titlecode">jQuery:</p><code><p>$("#buttest").click(function(){
+var a = $("#text1").val();
+var b = $("#text2").val();
+	$.ajax({
+		type: "POST",
+		url: "test.php",
+		data: ({a : a, b : b}),
+		beforesend: alert("Отправляемые данные: a = " + a + ", b = " + b),
+		success: function(data){alert("Сумма= " + data);}
+	});
+});</p></code>
+		<p id="titlecode">PHP:</p><code><p>$a = $_POST["a"]; $b = $_POST["b"]; echo $a + $b;</p></code>
+		<p id="titlecode">Пример:</p><pre>a: <input type="text" id="text1" value="">   b:<input type="text" id="text2" value="">   <button id="buttest">Получить сумму</button></pre>
+		</div> <!-- end example-->
+		</div> <!--end content-->
+		<div id="menu">
+			<ul>
+				<li><a href="intro.html">Назад</a></li>
+				<li><a href="2.html">Вперед</a></li>
+			</ul>
+		</div> <!--end menu-->
+	</div> <!--end wrapper-->
+	<div id="footer"><!--#include virtual="footer.html" --></div> <!--end footer-->
+</div> <!--end main-->
+</body>
+</html>

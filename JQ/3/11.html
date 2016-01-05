@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251" />
+	<title>.getJSON()</title>
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#butexample").click(function () {
+				$("#doc").hide(500);
+				$("#example").show(500);
+			}); 
+			$("#butdoc").click(function () {
+				$("#doc").show(500);
+				$("#example").hide(500);
+			});
+
+			$("#buttest").click(function(){
+				$.getJSON(
+					"test.php",
+					{les : 11}, 
+					function(data){alert(data)}
+				)
+			});
+
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main">
+	<div id="header">.getJSON()</div> <!--end header-->
+	<div id="wrapper">
+		<pre align="right"><a href="#" id="butdoc">Документация</a>      <a href="#" id="butexample">Примеры</a></pre>
+		<div id="content">
+			<div id="doc">
+			<p id="theme"> - Загружает данные в формате JSON с сервера используя HTTP GET request.</p>
+			<p>Принимаемые аргументы: <strong>.getJSON(url, [data], [func], [type])</strong></p>
+			<dl>
+				<dt>url</dt>
+					<dd>URL запроса (куда пойдет запрос).</dd>
+				<dt>[data]</dt>
+					<dd>Данные которые будут отправлены на сервер.</dd>
+				<dt>[func]</dt>
+					<dd>Функция которая будет вызвана после успешного получения данных.</dd>
+				<dt>[type]</dt>
+					<dd>Тип данных которые вернутся (: "xml", "html", "script", "json", "jsonp", "text").</dd>
+			</dl>
+		</div> <!-- end doc-->
+		<div id="example" style="display: none;">
+		<p id="titlecode">JSON:</p><code><p>{"id":"1","name":"ivan","country":"Russia","office":["yandex","management"]}</p></code>
+		<p id="titlecode">HTML:</p><code><p>&lt;button id="buttest"&gt;Отправить Ajax запрос&lt;/button&gt;</p></code>
+		<p id="titlecode">jQuery:</p><code><p>$("#buttest").click(function(){
+	$.getJSON(
+		"test.php",
+		function(data){alert(data)}
+	)
+});</p></code>
+		<p id="titlecode">Пример:</p><pre><button id="buttest">Отправить Ajax запрос</button></pre>
+		</div> <!-- end example-->
+		</div> <!--end content-->
+		<div id="menu">
+			<ul>
+				<li><a href="10.html">Назад</a></li>
+				<li><a href="12.html">Вперед</a></li>
+			</ul>
+		</div> <!--end menu-->
+	</div> <!--end wrapper-->
+	<div id="footer"><!--#include virtual="footer.html" --></div> <!--end footer-->
+</div> <!--end main-->
+</body>
+</html>

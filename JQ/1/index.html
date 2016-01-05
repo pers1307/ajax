@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Примеры для Ajax JQ</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="../jquery-2.1.4.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+
+            $("#buttest").click(function(){
+                var a = $("#text1").val();
+                var b = $("#text2").val();
+
+                /*
+                var str = $("#text1").serialize(); // Функция приводит данные к одной строке
+                .serializeArray() // Для превращения массива в массив json
+                $('#exmp').text(str);
+                */
+
+                /*
+                $.post( // Отправка post
+                        'test.php',
+                        {a : a},
+                        function (data) {alert("");}
+                );
+                */
+
+                /*
+                var div = $("#exmp"); // загрузка html кода напрямую в элемент
+                div.load(
+                        'test.php',
+                        {a : a},
+                        alert("Download")
+                );
+                */
+
+
+                //$.getScript("test.js"); // Подгружает и выполняет js файл и исполняет его!
+
+                /*
+                $.get( // Отправка через get
+                        "test.php",
+                        {a : a, b : b},
+                        function (data) {alert(data);}
+                );
+                */
+
+                // $.getJSON() Отправить в формате Json
+
+                /*
+                $.ajax({
+                    type: "POST",
+                    url: "test.php",
+                    data: ({a : a, b : b}),
+                    beforesend: alert("Отправка"),
+                    success: function (data) {alert("Сумма = " + data);}
+                }); // $.ajax
+                */
+
+            }); // $("#buttest").click
+
+            /*
+            $("#buttest").ajaxComplete(function (){ // Срабатывает при выполнении запроса
+                alert("Запрос завершен!");
+            });
+
+            $("#buttest").ajaxError(function(){
+                alert("Неудача");
+            });
+
+            $("#buttest").ajaxSend(function(){ // Выполняется после отправки запроса.
+                alert("Запрос отправлен!");
+            });
+
+            $("#buttest").ajaxStart(); // Начало выполнения запроса
+
+            $("#buttest").ajaxStop(); // Завершение ajax запроса
+
+            $("#buttest").ajaxSuccess(); // При завершении запроса
+            */
+
+
+        }); // ready
+    </script>
+</head>
+<body>
+    <input type="text" id="text1" value="">
+    <input type="text" id="text2" value="">
+    <button id="buttest">Получить сумму</button>
+    <div id="exmp">
+
+    </div>
+</body>
+</html>

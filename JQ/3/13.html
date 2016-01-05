@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251" />
+	<title>.load()</title>
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#butexample").click(function () {
+				$("#doc").hide(500);
+				$("#example").show(500);
+			}); 
+			$("#butdoc").click(function () {
+				$("#doc").show(500);
+				$("#example").hide(500);
+			});
+
+			$("#buttest").click(function(){
+				var text = $("#text1").val();
+				var w = $("#exmpleload");
+				w.load('test.php', {les : 13, a : text}, alert("Загружено"))
+			});
+
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main">
+	<div id="header">.load()</div> <!--end header-->
+	<div id="wrapper">
+		<pre align="right"><a href="#" id="butdoc">Документация</a>      <a href="#" id="butexample">Примеры</a></pre>
+		<div id="content">
+			<div id="doc">
+			<p id="theme"> - Загружает данные с сервера и помещает возвращаемые данные HTML в материнский елемент.</p>
+			<p>Принимаемые аргументы: <strong>.load(url, [data], [func])</strong></p>
+			<dl>
+				<dt>url</dt>
+					<dd>URL запроса (куда пойдет запрос).</dd>
+				<dt>[data]</dt>
+					<dd>Данные которые будут отправлены на сервер.</dd>
+				<dt>[func]</dt>
+					<dd>Функция которая будет вызвана после успешного получения данных.</dd>
+			</dl>
+		</div> <!-- end doc-->
+		<div id="example" style="display: none;">
+		<p id="titlecode">PHP:</p><code><p>if (is_numeric($_POST["a"])) {
+		echo "Это &lt;strong&gt;число&lt;/strong&gt;";
+	} else {
+		echo "Это &lt;strong&gt;символ&lt;/strong&gt;";
+	}</p></code>
+		<p id="titlecode">HTML:</p><code><p>&lt;button id="buttest"&gt;Отправить Ajax запрос&lt;/button&gt;
+		&lt;div id="exmpleload"&gt;&lt;/div&gt;</p></code>
+		<p id="titlecode">jQuery:</p><code><p>$("#buttest").click(function(){
+	var text = $("#text1").val();
+	var w = $("#exmpleload");
+	w.load('test.php', {a : text}, alert("Загружено"))
+});</p></code>
+		<p id="titlecode">Пример:</p><pre><input type="text" id="text1" value=""><button id="buttest">Отправить Ajax запрос</button><div id="exmpleload"></div></pre>
+		</div> <!-- end example-->
+		</div> <!--end content-->
+		<div id="menu">
+			<ul>
+				<li><a href="12.html">Назад</a></li>
+				<li><a href="14.html">Вперед</a></li>
+			</ul>
+		</div> <!--end menu-->
+	</div> <!--end wrapper-->
+	<div id="footer"><!--#include virtual="footer.html" --></div> <!--end footer-->
+</div> <!--end main-->
+</body>
+</html>

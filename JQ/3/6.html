@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251" />
+	<title>.ajaxStart()</title>
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#butexample").click(function () {
+				$("#doc").hide(500);
+				$("#example").show(500);
+			}); 
+			$("#butdoc").click(function () {
+				$("#doc").show(500);
+				$("#example").hide(500);
+			});
+
+			$("#buttest").click(function(){
+				$.ajax({
+					type: "POST",
+					url: "test.php",
+					data: ({les : 6})
+				});
+			});
+			$("#buttest").ajaxStart(function(){
+				alert("Запрос Стартовал");
+			}); 
+
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main">
+	<div id="header">.ajaxStart()</div> <!--end header-->
+	<div id="wrapper">
+		<pre align="right"><a href="#" id="butdoc">Документация</a>      <a href="#" id="butexample">Примеры</a></pre>
+		<div id="content">
+			<div id="doc">
+			<p id="theme"> - Функция выполняется каждый раз начале Ajax запроса.</p>
+			<p>Принимаемые аргументы:</p>
+			<dl>
+				<dt>request</dt>
+					<dd>Принимает объект XMLHttpRequest.</dd>
+				<dt>settings</dt>
+					<dd>Принимает настройки.</dd>
+			</dl>
+			(.ajaxStart(function(request, settings){ ... })
+		</div> <!-- end doc-->
+		<div id="example" style="display: none;">
+		<p id="titlecode">HTML:</p><code><p>&lt;button id="buttest"&gt;Отправить Ajax запрос&lt;/button&gt;</p></code>
+		<p id="titlecode">jQuery:</p><code><p>$("#buttest").click(function(){
+	$.ajax({
+		type: "POST",
+		url: "test.php",
+		data: ({les : 6}),
+	});
+});
+$("#buttest").ajaxStart(function(){
+	alert("Запрос Стартовал");
+});</p></code>
+		<p id="titlecode">Пример:</p><pre><button id="buttest">Отправить Ajax запрос</button></pre>
+		</div> <!-- end example-->
+		</div> <!--end content-->
+		<div id="menu">
+			<ul>
+				<li><a href="5.html">Назад</a></li>
+				<li><a href="7.html">Вперед</a></li>
+			</ul>
+		</div> <!--end menu-->
+	</div> <!--end wrapper-->
+	<div id="footer"><!--#include virtual="footer.html" --></div> <!--end footer-->
+</div> <!--end main-->
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>Форма для пиццы</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" language="javascript">
+
+        // Статическое создание запроса
+        var request = null;
+
+        try {
+            request = new XMLHttpRequest();
+        } catch (trymicrosoft) {
+            try {
+                request = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (othermicrosoft) {
+                try {
+                    request - new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (failed) {
+                    request = null;
+                }
+            }
+        }
+
+        function createRequest() {
+            try {
+                request = new XMLHttpRequest();
+            } catch (trymicrosoft) {
+                try {
+                    request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (othermicrosoft) {
+                    try {
+                        request - new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (failed) {
+                        request = null;
+                    }
+                }
+            }
+
+            if (request == null)
+                alert("Error creating request object!");
+        } // createRequest()
+
+        function getCustomerInfo() {
+            var phone = document.getElementById("phone").value;
+            //createRequest();
+            var url = "lookupCustomer.php?phone=" + escape(phone);
+            request.open("GET", url, true);
+            request.onreadystatechange = updatePage;
+            request.send(null);
+        }
+
+        function updatePage() {
+            if (request.readyState == 4) { // Ждем когда результат запроса придет
+                if (request.status == 200) {
+                    var customerAddress = request.responseText;
+                    document.getElementById("address").value = customerAddress;
+                } else {
+                    alert("Error URL!");
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="document.forms[0].reset();">
+    <form method="post" action="">
+        <p>Phone</p>
+        <input type="text" size="14" name="phone" onchange="getCustomerInfo();" id="phone"/>
+        <p>Adress</p>
+        <p><textarea rows="6" cols="50" name="address" id="address"></textarea></p>
+        <p>Order</p>
+        <p><textarea rows="6" cols="50" name="order" id="order"></textarea></p>
+        <p><input type="submit" value="Order Pizza" id="submit"></p>
+    </form>
+</body>
+</html>

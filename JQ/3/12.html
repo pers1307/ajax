@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251" />
+	<title>.getScript()</title>
+	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#butexample").click(function () {
+				$("#doc").hide(500);
+				$("#example").show(500);
+			}); 
+			$("#butdoc").click(function () {
+				$("#doc").show(500);
+				$("#example").hide(500);
+			});
+
+			$("#buttest").click(function(){
+				$.getScript(
+					"test.js"
+				)
+			});
+
+		});
+	</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="main">
+	<div id="header">.getScript()</div> <!--end header-->
+	<div id="wrapper">
+		<pre align="right"><a href="#" id="butdoc">Документация</a>      <a href="#" id="butexample">Примеры</a></pre>
+		<div id="content">
+			<div id="doc">
+			<p id="theme"> - Загружает JavaScript файл с сервера используя HTTP GET request, и выполняет его.</p>
+			<p>Принимаемые аргументы: <strong>.get(url, [func])</strong></p>
+			<dl>
+				<dt>url</dt>
+					<dd>URL запроса (куда пойдет запрос).</dd>
+				<dt>[func]</dt>
+					<dd>Функция которая будет вызвана после успешного получения данных.</dd>
+			</dl>
+		</div> <!-- end doc-->
+		<div id="example" style="display: none;">
+		<p id="titlecode">JavaScript:</p><code><p>document.bgColor = 'blue';
+alert("this is JavaScript");</p></code>
+		<p id="titlecode">HTML:</p><code><p>&lt;button id="buttest"&gt;Отправить Ajax запрос&lt;/button&gt;</p></code>
+		<p id="titlecode">jQuery:</p><code><p>$("#buttest").click(function(){
+	$.getScript(
+		"test.js"
+	)
+});</p></code>
+		<p id="titlecode">Пример:</p><pre><button id="buttest">Отправить Ajax запрос</button></pre>
+		</div> <!-- end example-->
+		</div> <!--end content-->
+		<div id="menu">
+			<ul>
+				<li><a href="11.html">Назад</a></li>
+				<li><a href="13.html">Вперед</a></li>
+			</ul>
+		</div> <!--end menu-->
+	</div> <!--end wrapper-->
+	<div id="footer"><!--#include virtual="footer.html" --></div> <!--end footer-->
+</div> <!--end main-->
+</body>
+</html>
