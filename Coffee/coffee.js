@@ -1,10 +1,13 @@
 function sendRequest(url) {
-    request.onreadystatechange = serveDrink; // Задание функции обратного вызова
+    request.onreadystatechange = serveDrink; // Задаем функцию обратного вызова
     request.open("GET", url, true);
     request.send(null);
 }
 
 function serveDrink() {
+
+    console.log('serve');
+    console.log(request.readyState);
 
     if (request.readyState == 4) {
         if (request.status == 200) {
@@ -33,7 +36,7 @@ function orderCoffee() {
 
     if (status == "Idle") {
 
-        replaceText(cofeemakerStatus1, "Brewing" + name + "'s" + size + " " + beverage);
+        replaceText(coffeemakerStatusDiv1, "Brewing" + name + "'s" + size + " " + beverage);
         document.forms[0].reset();
         var url = "coffeemaker.php?name=" + escape(name) +
             "&size=" + escape(size) +
@@ -52,6 +55,8 @@ function orderCoffee() {
                 "&beverage=" + escape(beverage) +
                 "&coffeemaker=2";
             sendRequest(url);
+        } else {
+            alert('Sorry! Both coffee makers are busy. Try again later, men');
         }
     }
 }
@@ -59,7 +64,7 @@ function orderCoffee() {
 function getSize() {
 
     var sizeGroup = document.forms[0].size;
-    for (i = 0; i < sizeGroup.length; i++) {
+    for (var i = 0; i < sizeGroup.length; i++) {
         if (sizeGroup[i].checked == true) {
             return sizeGroup[i].value;
         }
@@ -69,7 +74,7 @@ function getSize() {
 function getBeverage() {
 
     var bevarageGroup = document.forms[0].bevarage;
-    for (i = 0; i < bevarageGroup.length; i++) {
+    for (var i = 0; i < bevarageGroup.length; i++) {
         if (bevarageGroup[i].checked == true) {
             return bevarageGroup[i].value;
         }
