@@ -1,19 +1,27 @@
-// Статическое создание запроса
-var request = null;
+function createRequest()
+{
+    var request = null;
 
-try {
-    request = new XMLHttpRequest();
-} catch (trymicrosoft) {
     try {
-        request = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (othermicrosoft) {
+        request = new XMLHttpRequest();
+    } catch (trymicrosoft) {
         try {
-            request = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (failed) {
-            request = null;
+            request = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (othermicrosoft) {
+            try {
+                request = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (failed) {
+                request = null;
+            }
         }
+    }
+
+    if (request == null) {
+        alert("Error creating request object!");
+    } else {
+        return request;
     }
 }
 
-if (request == null)
-    alert("Error creating request object!");
+var request1 = createRequest();
+var request2 = createRequest();
