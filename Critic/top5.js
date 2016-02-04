@@ -47,3 +47,4 @@ function addToTop5()
 
 // Защита от sql запросов в PHP коде mysql_real_escape_string('строка');
 
+//
